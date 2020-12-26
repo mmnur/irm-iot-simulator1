@@ -1,4 +1,4 @@
-package com.example.iot.users;
+package com.example.iot.iam;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +13,7 @@ public class AppController {
 	
 	@RequestMapping({"/"})
 	public String loadUI() {
-		log.info("loading UIssdd");
+		log.info("loading UI");
 		return "forward:/index.html";
 	}
 

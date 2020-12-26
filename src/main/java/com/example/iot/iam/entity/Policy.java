@@ -1,4 +1,4 @@
-package com.example.iot.users.entity;
+package com.example.iot.iam.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +10,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Users {
+public class Policy {
 	
 	@Id
 	@Column

@@ -1,11 +1,11 @@
-package com.example.iot.users.repository;
+package com.example.iot.iam.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import com.example.iot.users.entity.Users;
+import com.example.iot.iam.entity.Policy;
 
 @RepositoryRestResource()
-public interface UsersRepository extends JpaRepository<Users, Integer>, JpaSpecificationExecutor<Users>, QuerydslPredicateExecutor<Users> {}
+public interface PolicyRepository extends JpaRepository<Policy, Integer>, JpaSpecificationExecutor<Policy>, QuerydslPredicateExecutor<Policy> {}

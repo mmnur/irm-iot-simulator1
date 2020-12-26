@@ -1,10 +1,10 @@
-package com.example.iot.users;
+package com.example.iot.iam;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class UsersApplicationTests {
+class IoTApplicationTests {
 
 	@Test
 	void contextLoads() {

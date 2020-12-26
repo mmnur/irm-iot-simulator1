@@ -1,6 +1,4 @@
-package com.example.iot.users.controller;
-
-import java.util.List;
+package com.example.iot.iam.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,31 +8,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.iot.users.entity.Users;
-import com.example.iot.users.links.UserLinks;
-import com.example.iot.users.service.UsersService;
+import com.example.iot.iam.entity.User;
+import com.example.iot.utils.Constants;
+import com.example.iot.iam.service.IamService;
+
+import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
 @RequestMapping("/api/")
-public class UsersController {
+public class UserController {
 	
 	@Autowired
-	UsersService usersService;
+	IamService iamService;
 	
-	@GetMapping(path = UserLinks.LIST_USERS)
+	@GetMapping(path = Constants.URL_LIST_USERS)
     public ResponseEntity<?> listUsers() {
-        log.info("UsersController:  list users");
-        List<Users> resource = usersService.getUsers();
+        log.info("IoTController:  list users");
+        List<User> resource = iamService.getUsers();
         return ResponseEntity.ok(resource);
     }
 	
-	@PostMapping(path = UserLinks.ADD_USER)
-	public ResponseEntity<?> saveUser(@RequestBody Users user) {
-        log.info("UsersController:  list users");
-        Users resource = usersService.saveUser(user);
+	@PostMapping(path = Constants.URL_ADD_USER)
+	public ResponseEntity<?> saveUser(@RequestBody User user) {
+        log.info("IoTController:  list users");
+        User resource = iamService.saveUser(user);
         return ResponseEntity.ok(resource);
     }
 }

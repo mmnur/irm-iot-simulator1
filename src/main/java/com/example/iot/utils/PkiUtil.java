@@ -11,6 +11,7 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 
 import javax.crypto.Cipher;
+import com.example.iot.error.IoTCryptographyException;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -23,14 +24,12 @@ import java.security.NoSuchProviderException;
 
 import org.slf4j.Logger;
 
-import com.example.irm.error.IrmCryptographyException;
-
 public class PkiUtil
 {
 	private static Logger LOGGER = LogUtil.getLogger();
 	
 	public static KeyPair generateKeyPair()
-			throws IrmCryptographyException
+			throws IoTCryptographyException
 	{
 		try {
 			KeyPairGenerator generator = KeyPairGenerator.getInstance(Constants.PKI_ALGORITHM);
@@ -39,7 +38,7 @@ public class PkiUtil
 		    return keyPair;
 		} catch (NoSuchAlgorithmException e) {
 			LOGGER.error("Error when generating key pair", e);
-			throw new IrmCryptographyException(e);
+			throw new IoTCryptographyException(e);
 		}
 	}
 	
@@ -108,7 +107,7 @@ public class PkiUtil
 	}
 	
 	public static PublicKey rebuildPublicKey(String strKey)
-			throws IrmCryptographyException
+			throws IoTCryptographyException
 	{
 		byte[] bKey  = Base64.getDecoder().decode(strKey);
 		PublicKey pubKey = null;
@@ -119,14 +118,14 @@ public class PkiUtil
 			System.out.println("FINAL OUTPUT" + pubKey);
 		} catch(NoSuchAlgorithmException | InvalidKeySpecException e) {
 			LOGGER.error("Error when rebuilding public key", e);
-			throw new IrmCryptographyException(e);
+			throw new IoTCryptographyException(e);
 		}
 		
 		return pubKey;
 	}
 	
 	public static PrivateKey rebuildPrivateKey(String strKey)
-			throws IrmCryptographyException
+			throws IoTCryptographyException
 	{
 		byte[] bKey  = Base64.getDecoder().decode(strKey);
 		PrivateKey priKey = null;
@@ -137,7 +136,7 @@ public class PkiUtil
 			System.out.println("FINAL OUTPUT" + priKey);
 		} catch(NoSuchAlgorithmException | InvalidKeySpecException e) {
 			LOGGER.error("Error when rebuilding public key", e);
-			throw new IrmCryptographyException(e);
+			throw new IoTCryptographyException(e);
 		}
 		
 		return priKey;

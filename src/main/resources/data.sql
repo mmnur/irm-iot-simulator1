@@ -1,13 +1,29 @@
 DROP TABLE IF EXISTS users;
 
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
   id INT PRIMARY KEY,
   FIRST_NAME VARCHAR(250) NOT NULL,
   LAST_NAME VARCHAR(250) NOT NULL,
   EMAIL VARCHAR(250) NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS scopes (
+  id INT PRIMARY KEY,
+  NAME VARCHAR(50) NOT NULL,
+  DESCRIPTION VARCHAR(100)
+);
+
+CREATE TABLE IF NOT EXISTS Policies (
+  id INT PRIMARY KEY,
+  NAME VARCHAR(50) NOT NULL,
+  DESCRIPTION VARCHAR(100),
+  GRANTED_SCOPES VARCHAR(100) NOT NULL,
+  CONDITIONS(250) NOT NULL,
+  ACTION(10) NOT NULL  
+);
+
 INSERT INTO users (ID, FIRST_NAME, LAST_NAME, EMAIL) VALUES
-  (1, 'first', 'last 1', 'abc1@gmail.com'),
-  (2, 'first', 'last 2', 'abc2@gmail.com'),
-  (3, 'first', 'last 3', 'abc3@gmail.com');
+  (1, 'Jim', 'Carter', 'jim1@example.com'),
+  (2, 'Jack', 'Smith', 'jack1@example.com'),
+  (3, 'Pam', 'Smith', 'pam1@example.com'),
+  (4, 'Oliver', 'Smith', 'oliver1@example.com');
